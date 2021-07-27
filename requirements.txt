@@ -1,0 +1,2 @@
+djangorestframework
+# -e git+https://github.com/frankhood/django-password-policies-iplweb.git@develop#egg=django-password-policies-iplweb
