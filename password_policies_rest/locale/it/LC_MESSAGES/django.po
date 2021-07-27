@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 19:14+0200\n"
-"PO-Revision-Date: 2021-07-26 19:15+0200\n"
+"POT-Creation-Date: 2021-07-27 17:05+0200\n"
+"PO-Revision-Date: 2021-07-27 17:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
@@ -18,68 +18,103 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0\n"
 
-#: project/apps/password_policies_rest/serializers.py:28
+#: password_policies_rest/serializers.py:28
 msgid "The new password was used before. Please enter another one."
 msgstr ""
 "La nuova password è già stata utilizzata. Per favore inseriscine un’altra."
 
-#: project/apps/password_policies_rest/serializers.py:56
+#: password_policies_rest/serializers.py:56
 msgid "New password"
 msgstr "Nuova password"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:20
+#: password_policies_rest/templates/password_policies_rest/password_change_form.html:56
+msgid "Documentation"
+msgstr ""
+
+#: password_policies_rest/templates/password_policies_rest/password_change_form.html:56
+#: password_policies_rest/templates/password_policies_rest/password_change_form.html:119
+msgid "Change password"
+msgstr "Modifica password"
+
+#: password_policies_rest/templates/password_policies_rest/password_change_form.html:56
+msgid "Log out"
+msgstr ""
+
+#: password_policies_rest/templates/password_policies_rest/password_change_form.html:59
+msgid "Home"
+msgstr ""
+
+#: password_policies_rest/templates/password_policies_rest/password_change_form.html:60
+msgid "Password change"
+msgstr "Modifica password"
+
+#: password_policies_rest/templates/password_policies_rest/password_change_form.html:70
+msgid "Please correct the error below."
+msgstr ""
+
+#: password_policies_rest/templates/password_policies_rest/password_change_form.html:70
+msgid "Please correct the errors below."
+msgstr ""
+
+#: password_policies_rest/templates/password_policies_rest/password_change_form.html:74
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:20
 #, python-format
 msgid "must be at least 1 character long"
 msgid_plural "must be at least %(count)s characters long"
 msgstr[0] "deve contenere almeno un carattere"
 msgstr[1] "deve contenere almeno %(count)s caratteri"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:27
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:27
 msgid "must not be a common sequence of characters"
 msgstr "non deve essere una sequenza di caratteri comune"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:32
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:32
 #, python-format
 msgid "must not contain %(count)s or more consecutive identical characters"
 msgstr "non deve contenere %(count)s o più caratteri identici consecutivi"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:37
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:37
 msgid "must be strong enough."
 msgstr "deve essere abbastanza forte."
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:41
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:41
 msgid "must not be based on a dictionary word."
 msgstr "non deve essere basata su una parola del dizionario."
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:45
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:45
 #, python-format
 msgid "must contain at least 1 alphanumeric character"
 msgid_plural "must contain at least %(count)s alphanumeric characters"
 msgstr[0] "deve contenere almeno 1 carattere alfanumerico"
 msgstr[1] "deve contenere almeno %(count)s caratteri alfanumerici"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:52
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:52
 #, python-format
 msgid "must contain at least 1 lowercase character"
 msgid_plural "must contain at least %(count)s lowercase characters"
 msgstr[0] "deve contenere almeno 1 carattere minuscolo"
 msgstr[1] "deve contenere almeno %(count)s caratteri minuscoli"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:60
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:60
 #, python-format
 msgid "must contain at least 1 uppercase character"
 msgid_plural "must contain at least %(count)s uppercase characters"
 msgstr[0] "deve contenere almeno 1 carattere maiuscolo"
 msgstr[1] "deve contenere almeno %(count)s caratteri maiuscoli"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:68
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:68
 #, python-format
 msgid "must contain at least 1 number"
 msgid_plural "must contain at least %(count)s numbers"
 msgstr[0] "deve contenere almeno 1 numero"
 msgstr[1] "deve contenere almeno %(count)s numeri"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:75
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:75
 #, python-format
 msgid "must contain at least 1 special character (e.g. @#$%%^&.)"
 msgid_plural ""
@@ -87,42 +122,42 @@ msgid_plural ""
 msgstr[0] "deve contenere almeno 1 carattere speciale (es. @#$%%^&.)"
 msgstr[1] "deve contenere almeno %(count)s carattere speciale (es. @#$%%^&.)"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:85
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:81
 msgid "must not be an email."
 msgstr "non deve essere una mail."
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:92
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:99
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:88
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:95
 #, python-format
 msgid "Make sure it differs from the last password"
 msgid_plural "Make sure it differs from the last %(count)s passwords"
 msgstr[0] "Assicurati che differisca dall’ ultima password"
 msgstr[1] "Assicurati che differisca dalle ultime %(count)s password"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:105
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:101
 msgid "Make sure it is not similar to the old password"
 msgstr "Assicurati che non sia simile alla vecchia password"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:115
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:108
 msgid "Password ok!"
 msgstr "Password ok!"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:116
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:109
 msgid "Old password is required"
 msgstr "La vecchia password è obbligatoria"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:117
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:110
 msgid "Passwords do not match"
 msgstr "Le password non coincidono"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:118
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:111
 msgid "Password match!"
 msgstr "Le password coincidono!"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:119
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:112
 msgid "must be strong enough"
 msgstr "deve essere abbastanza forte"
 
-#: project/apps/password_policies_rest/templatetags/password_policies_rest_tags.py:123
+#: password_policies_rest/templatetags/password_policies_rest_tags.py:116
 msgid "The new password must have the following characteristics:"
 msgstr "La nuova password deve avere le seguenti caratteristiche:"
