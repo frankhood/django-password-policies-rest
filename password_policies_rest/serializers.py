@@ -1,4 +1,5 @@
 import six
+import django
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.utils.functional import lazy
@@ -6,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from password_policies.conf import settings as password_settings
 from password_policies.forms import validators as password_validators
 from rest_framework import serializers
-from rest_framework.compat import MaxLengthValidator, MinLengthValidator
+from rest_framework.fields import MaxLengthValidator, MinLengthValidator
 from rest_framework.exceptions import ValidationError
 from rest_framework.fields import empty, get_error_detail
 from rest_framework.serializers import as_serializer_error
