@@ -17,29 +17,6 @@ class ChangePasswordAPIViewTest(APITestCase):
         self.api_client = APIClient()
         self.request_factory = APIRequestFactory()
 
-    def test_permission_IsAuthenticated_401(self):
-        User.objects.create_user(username="testUser", password="test-test")
-        response = self.api_client.post(
-            reverse("password-policies-rest:change-password-api"),
-            {
-                "new_password1": "Qazxsw1234*",
-            },
-            format='json'
-        )
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-
-    def test_permission_IsActiveUser_403(self):
-        User.objects.create_user(username="nonActiveUser", password="test-test", is_active=False)
-        self.api_client.login(username='nonActiveUser', password='test-test')
-        response = self.api_client.post(
-            reverse("password-policies-rest:change-password-api"),
-            {
-                "new_password1": "Qazxsw1234*",
-            },
-            format='json'
-        )
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
     def test_post_200(self):
         User.objects.create_user(username="testUser", password="test-test")
         self.api_client.login(username='testUser', password='test-test')
@@ -84,11 +61,13 @@ class ChangePasswordAPIViewTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn("invalid_consecutive_count", response.data['non_field_errors'][0])
 
+    @override_settings(PASSWORD_MIN_UPPERCASE_LETTERS=1)
     def test_post_400(self):
         User.objects.create_user(username="testUser", password="test-test")
 
         self.api_client.login(username='testUser', password='test-test')
         with self.subTest("invalid_uppercaseletter_count"):
+            print("password_settings.PASSWORD_MIN_UPPERCASE_LETTERS : {}".format(password_settings.PASSWORD_MIN_UPPERCASE_LETTERS))
             response = self.api_client.post(
                 reverse("password-policies-rest:change-password-api"),
                 {
@@ -97,6 +76,6 @@ class ChangePasswordAPIViewTest(APITestCase):
                 format='json'
             )
             self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-            self.assertEqual(response.data['non_field_errors'][0], "invalid_uppercaseletter_count")
+            self.assertIn("invalid_uppercaseletter_count", response.data['non_field_errors'][0])
 
         # see password_policies.tests.test_forms for other tests

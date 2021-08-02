@@ -47,24 +47,20 @@ def code_exception_handler(exc, context):
 class ChangePasswordCheckAPIView(
     generics.GenericAPIView,
 ):
-    authentication_classes = (authentication.SessionAuthentication,)
+    authentication_classes = ()
     permission_classes = (
-        permissions.IsAuthenticated,
-        IsActiveUser,
+        permissions.AllowAny,
     )
     renderer_classes = (renderers.JSONRenderer, )
     serializer_class = PasswordPoliciesSerializer
 
     def get_exception_handler(self):
-        """
-        Returns the exception handler that this view uses.
-        """
+        """ Modify exception handler to return error codes instead of error strings """
         return code_exception_handler
 
     def post(self, request, *args, **kwargs):  # noqa
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        # return hashed password
         return Response({"message": "OK"})
 
 

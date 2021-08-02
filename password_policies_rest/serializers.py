@@ -23,35 +23,27 @@ class PasswordPoliciesSerializer(serializers.Serializer):
     Has the following fields and methods:"""
 
     #: This forms error messages.
-    default_error_messages = dict(
-        **{
-            "password_used": _(
-                "The new password was used before. " "Please enter another one."
-            ),
-        }
-    )
-
     new_password_validators = [
-            password_validators.validate_common_sequences,
-            password_validators.validate_consecutive_count,
-            password_validators.validate_cracklib,
-            password_validators.validate_dictionary_words,
-            password_validators.validate_letter_count,
-            password_validators.validate_lowercase_letter_count,
-            password_validators.validate_uppercase_letter_count,
-            password_validators.validate_number_count,
-            password_validators.validate_symbol_count,
-            password_validators.validate_entropy,
-            password_validators.validate_not_email,
-            MaxLengthValidator(password_settings.PASSWORD_MAX_LENGTH or 1000, message=lazy(
-                serializers.CharField.default_error_messages['max_length'].format,
-                six.text_type
-            )(max_length=password_settings.PASSWORD_MAX_LENGTH or 1000)),
-            MinLengthValidator(password_settings.PASSWORD_MIN_LENGTH or 0, message=lazy(
-                serializers.CharField.default_error_messages['min_length'].format,
-                six.text_type
-            )(min_length=password_settings.PASSWORD_MIN_LENGTH or 0))
-        ]
+        password_validators.validate_common_sequences,
+        password_validators.validate_consecutive_count,
+        password_validators.validate_cracklib,
+        password_validators.validate_dictionary_words,
+        password_validators.validate_letter_count,
+        password_validators.validate_lowercase_letter_count,
+        password_validators.validate_uppercase_letter_count,
+        password_validators.validate_number_count,
+        password_validators.validate_symbol_count,
+        password_validators.validate_entropy,
+        password_validators.validate_not_email,
+        MaxLengthValidator(password_settings.PASSWORD_MAX_LENGTH or 1000, message=lazy(
+            serializers.CharField.default_error_messages['max_length'].format,
+            six.text_type
+        )(max_length=password_settings.PASSWORD_MAX_LENGTH or 1000)),
+        MinLengthValidator(password_settings.PASSWORD_MIN_LENGTH or 0, message=lazy(
+            serializers.CharField.default_error_messages['min_length'].format,
+            six.text_type
+        )(min_length=password_settings.PASSWORD_MIN_LENGTH or 0))
+    ]
 
     new_password1 = serializers.CharField(
         label=_("New password"),
@@ -68,9 +60,6 @@ class PasswordPoliciesSerializer(serializers.Serializer):
             self._lazy_errors.extend(ex.detail)
 
     def validate(self, validated_data):
-        """
-        Validates that old and new password are not too similar."""
-        # old_password = validated_data.get("old_password")
         self._lazy_errors = getattr(self, "_lazy_errors", [])
         try:
             self.run_validators(validated_data)
