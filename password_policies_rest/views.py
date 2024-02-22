@@ -1,11 +1,9 @@
 from django.http.response import Http404
-from rest_framework import exceptions
-from rest_framework import generics, authentication, permissions, renderers
+from rest_framework import exceptions, generics, permissions, renderers
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 from rest_framework.views import set_rollback
 
-from .permissions import IsActiveUser
 from .serializers import PasswordPoliciesSerializer
 
 
@@ -27,16 +25,16 @@ def code_exception_handler(exc, context):
 
     if isinstance(exc, exceptions.APIException):
         headers = {}
-        if getattr(exc, 'auth_header', None):
-            headers['WWW-Authenticate'] = exc.auth_header
-        if getattr(exc, 'wait', None):
-            headers['Retry-After'] = '%d' % exc.wait
+        if getattr(exc, "auth_header", None):
+            headers["WWW-Authenticate"] = exc.auth_header
+        if getattr(exc, "wait", None):
+            headers["Retry-After"] = "%d" % exc.wait
 
         if isinstance(exc.detail, (list, dict)):
             # get the Error codes instead of Error messages
             data = exc.get_codes()
         else:
-            data = {'detail': exc.get_codes()}
+            data = {"detail": exc.get_codes()}
 
         set_rollback()
         return Response(data, status=exc.status_code, headers=headers)
@@ -48,19 +46,15 @@ class ChangePasswordCheckAPIView(
     generics.GenericAPIView,
 ):
     authentication_classes = ()
-    permission_classes = (
-        permissions.AllowAny,
-    )
-    renderer_classes = (renderers.JSONRenderer, )
+    permission_classes = (permissions.AllowAny,)
+    renderer_classes = (renderers.JSONRenderer,)
     serializer_class = PasswordPoliciesSerializer
 
     def get_exception_handler(self):
-        """ Modify exception handler to return error codes instead of error strings """
+        """Modify exception handler to return error codes instead of error strings"""
         return code_exception_handler
 
     def post(self, request, *args, **kwargs):  # noqa
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         return Response({"message": "OK"})
-
-

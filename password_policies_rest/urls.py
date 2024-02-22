@@ -1,6 +1,6 @@
 import logging
 
-from django.conf.urls import url
+from django.urls import path
 
 from . import views as api_views
 
@@ -10,7 +10,9 @@ app_name = "password-policies-rest"
 
 
 urlpatterns = [
-    url(r'^change-password/$',
+    path(
+        "change-password/",
         api_views.ChangePasswordCheckAPIView.as_view(),
-        name="change-password-api"),
+        name="change-password-api",
+    ),
 ]
