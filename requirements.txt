@@ -1,3 +1,3 @@
 django>=3.2
-django-password-policies-iplweb @ git+https://github.com/frankhood/django-password-policies-iplweb.git@1.0.0#egg=django-password-policies-iplweb
+django-password-policies-iplweb @ git+https://github.com/frankhood/django-password-policies-iplweb.git@feature/FHS-200/fix-password-recovery#egg=django-password-policies-iplweb
 djangorestframework
